@@ -1,0 +1,15 @@
+[core]
+    editor       = vim
+    filemode     = true
+    excludesfile = ~/.gitignore
+[user]
+    name  = le-quoc-tuan
+    email = tuanlq.mail@gmail.com
+[color]
+    ui          = true
+    branch      = true
+    diff        = true
+    interactive = true
+    status      = true
+[push]
+    default = current
