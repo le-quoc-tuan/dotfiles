@@ -14,6 +14,7 @@
 "    -> Text, tab and indent related
 "    -> Moving around, tabs and buffers
 "    -> Status line
+"    -> NERD tree
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -61,8 +62,8 @@ set cursorline
 set cursorcolumn
 
 " View hidden characters
-:set list
-:set listchars=tab:▒░,trail:▓
+" :set list
+" :set listchars=tab:▒░,trail:▓
 
 " Ignore case when searching
 set ignorecase
@@ -118,6 +119,11 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+" https://github.com/Yggdroot/indentLine
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '│'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
@@ -147,3 +153,9 @@ map <leader>tm :tabmove
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
+
+
+""""""""""""""""""""""""""""""
+" => NERD tree
+""""""""""""""""""""""""""""""
+nmap <leader>d :NERDTreeToggle<CR>
