@@ -34,6 +34,7 @@ set autoread
 " like <leader>w saves the current file
 let mapleader = ","
 let g:mapleader = ","
+set pastetoggle=<F2>
 
 " Fast saving
 nmap <leader>w :w<cr>
@@ -86,7 +87,12 @@ set incsearch
 set t_Co=256
 syntax enable
 
-colorscheme zenburn
+" Vim long line
+set textwidth=120
+set synmaxcol=150
+
+" colorscheme zenburn
+colorscheme hemisu
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
