@@ -7,6 +7,18 @@ alias www='cd /var/www/html/'
 # EDITOR
 alias v=vim
 alias sv='sudo vim'
+
+# BASH
+alias bcf='vim ~/.bashrc'
+alias bal='vim ~/.bash_aliases'
+alias bre='source ~/.bashrc'
+
+# COMPOSER
+alias com='php /usr/local/bin/composer.phar'
+alias cup='php /usr/local/bin/composer.phar update'
+
+# APACHE
+alias aer='tail -f /var/log/apache2/error.log'
  
 # GIT
 alias gst='git status'
@@ -27,10 +39,11 @@ alias gcl='git clean'
 alias gsth='git stash'
 alias gsthp='git stash pop'
 alias gdf='git diff'
+alias gdc='git diff --cached'
 alias gf='git fetch'
 alias grs='git reset'
 
-# SVN                                                                                                                                                                                                               
+# SVN
 alias sst='svn status'
 alias sa='svn add'
 alias scm='svn ci'

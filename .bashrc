@@ -54,10 +54,10 @@ bash_prompt() {
   # PS1="\[$GREEN\]\t\[$RED\]-\[$BLUE\]\u\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$MAGENTA\]\$(__git_ps1)\[$WHITE\]\$ "
   # PS1="$TITLEBAR\[$R\][\[$C\]\t\[$R\]]\[$UC\]\u\[$Y\]\[$R\]\w\[\033[m\]\[$EMW\]\$(__git_ps1)\[$EMG\]\\$ "
   # PS1="$TITLEBAR${R}[${C}\t${R}]${UC}\u${Y}${W}\w\[\033[m\]${EMB}\$(__git_ps1) ${R}pM26EYAX ${W}\\$ "
-  PS1="$TITLEBAR${R}${UC}\u${Y}${W}\w\[\033[m\]${EMB}\$(__git_ps1)${W}\\$ "
   # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
   # PS1="[\u@\h \${NEW_PWD}]\\$ "
   # extra backslash in front of \$ to make bash colorize the prompt
+  PS1="$TITLEBAR${M}${K}\u${Y}${R}\w\[\033[m\]${C}\$(__git_ps1)${K}\\$ "
 }
 
 bash_prompt
