@@ -15,6 +15,7 @@
 "    -> Moving around, tabs and buffers
 "    -> Status line
 "    -> NERD tree
+"    -> PHP tools
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -165,3 +166,22 @@ set laststatus=2
 " => NERD tree
 """"""""""""""""""""""""""""""
 nmap <leader>d :NERDTreeToggle<CR>
+
+
+""""""""""""""""""""""""""""""
+" => PHP tools
+""""""""""""""""""""""""""""""
+" PHP executable (default = "php")
+let g:phpqa_php_cmd='/usr/bin/php'
+
+" PHP Code Sniffer binary (default = "phpcs")
+let g:phpqa_codesniffer_cmd='/usr/bin/phpcs'
+
+" Don't run messdetector on save (default = 1)
+let g:phpqa_messdetector_autorun = 0
+
+" Don't run codesniffer on save (default = 1)
+let g:phpqa_codesniffer_autorun = 0
+
+" Show code coverage on load (default = 0)
+let g:phpqa_codecoverage_autorun = 1
