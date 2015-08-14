@@ -137,10 +137,25 @@ let g:indentLine_char = '│'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Smart way to move between windows
-map <leader>j <C-W>j
-map <leader>k <C-W>k
-map <leader>h <C-W>h
-map <leader>l <C-W>l
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Moving between windows and split-windows 
+noremap <Space> gt
+noremap f <C-W>w
+
+" Quick moving mode
+noremap <Up> 10k
+noremap <Down> 10j
+noremap <Left> gT
+noremap <Right> gt
+
+" Resize split-windows
+noremap \ <C-W>_
+noremap <bar> <C-W><bar>
+noremap = <C-W>=
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
