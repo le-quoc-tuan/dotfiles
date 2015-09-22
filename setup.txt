@@ -1,0 +1,8 @@
+Integrating with powerline fonts
+
+For the nice looking powerline symbols to appear, you will need to install a patched font. Instructions can be found in the official powerline documentation. Prepatched fonts can be found in the powerline-fonts repository.
+
+Finally, you can add the convenience variable let g:airline_powerline_fonts = 1 to your vimrc which will automatically populate the g:airline_symbols dictionary with the powerline symbols.
+
+
+https://powerline.readthedocs.org/en/master/installation/linux.html#fonts-installation
