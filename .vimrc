@@ -1,202 +1,126 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Creator:
-"    le quoc tuan
-"    tuanlq.mail@gmail.com
-"
-" References:
-"    http://amix.dk/vim/vimrc.html
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> NERD tree
-"    -> PHP tools
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=============================================================
+" Plugin Install (junegunn/vim-plug)
+"=============================================================
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'bling/vim-airline'              " status/tabline
+Plug 'jonathanfilip/vim-lucius'       " colorscheme
+Plug 'tpope/vim-surround'             " surroundings, parentheses, brackets, quotes
+Plug 'junegunn/vim-easy-align'        " alignment
+Plug 'Yggdroot/indentLine'            " display vertical indentation
+Plug 'ervandew/supertab'              " use <Tab> for insert completion
+Plug 'Raimondi/delimitMate'           " automatic closing of quotes, brackets, parentheses
+Plug 'ntpeters/vim-better-whitespace' " hightlight and remove trailing whitespace characters
+Plug 'vim-scripts/matchit.zip'        " extended % matching
+Plug 'joonty/vim-phpqa'               " php quality checking tool
+
+call plug#end()
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"=============================================================
+" Global Settings
+"=============================================================
 
-" Enable filetype plugins
 filetype plugin on
 filetype indent on
+syntax enable
 
-" Set to auto read when a file is changed from the outside
+set encoding=utf-8
+set ffs=unix,dos,mac
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-set pastetoggle=<F2>
-
-" Fast saving
-nmap <leader>w :w<cr>
-
-" Fast quit
-nmap <leader>q :q<cr>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Turn on the WiLd menu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-
-" Intuitive backspacing in insert mode
 set backspace=indent,eol,start
-
-" Always show current position
+set nopaste
 set number
 set ruler
 set cursorline
 set cursorcolumn
-
-" View hidden characters
-" :set list
-" :set listchars=tab:▒░,trail:▓
-
-" Ignore case when searching
 set ignorecase
-
-" When searching try to be smart about cases 
+set laststatus=2
 set smartcase
-
-" Highlight search results
 set hlsearch
-
-" Makes search act like search in modern browsers
 set incsearch
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting
-set t_Co=256
-syntax enable
-
-" Vim long line
-set textwidth=120
-set synmaxcol=150
-
-" colorscheme zenburn
-colorscheme hemisu
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Store temporary files in a central spot
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
+set textwidth=180
+set synmaxcol=240
 set expandtab
-
-" Be smart when using tabs ;)
 set smarttab
-
-" 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
-
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+" set list!
+" set listchars=trail:␣,tab:⇥ᐧ,nbsp:⍽,eol:␤,extends:▸,precedes:◂
+" set listchars=eol:¬
 
-" https://github.com/Yggdroot/indentLine
-let g:indentLine_color_term = 239
+set t_Co=256
+colo lucius
+
+"=============================================================
+" Plugin Settings
+"=============================================================
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" indent-line
+let g:indentLine_color_term = 253 " default is 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
 
+" vim-easy-align
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" phpqa
+let g:phpqa_php_cmd              = '/usr/bin/php'
+let g:phpqa_codesniffer_cmd      = '/usr/bin/phpcs' " PHP Code Sniffer binary (default = 'phpcs')
+let g:phpqa_messdetector_autorun = 0                " Don't run messdetector on save (default = 1)
+let g:phpqa_codesniffer_autorun  = 0                " Don't run codesniffer on save (default = 1)
+let g:phpqa_codecoverage_autorun = 1                " Show code coverage on load (default = 0)
+
+" vim-better-whitespace
+autocmd BufWritePre * StripWhitespace
+
+
+"=============================================================
+" Customize Settings
+"=============================================================
+
+" Quickly open/reload vim
+" nnoremap ev :split $MYVIMRC<CR>
+" nnoremap sv :source $MYVIMRC<CR>
+
+" Paste toggle key
+set pastetoggle=<F2>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
-" Moving between windows and split-windows 
-noremap <Space> gt
+" Moving between windows and split-windows
 noremap f <C-W>w
 
-" Quick moving mode
-noremap <Up> 10k
-noremap <Down> 10j
-noremap <Left> gT
-noremap <Right> gt
+" Change split-windows size
+nnoremap - <C-W>_ <C-W><bar> <CR>
+noremap _ <C-W>=
 
-" Resize split-windows
-noremap \ <C-W>_
-noremap <bar> <C-W><bar>
-noremap = <C-W>=
-
-" Close the current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-
-""""""""""""""""""""""""""""""
-" => NERD tree
-""""""""""""""""""""""""""""""
-nmap <leader>d :NERDTreeToggle<CR>
-
-
-""""""""""""""""""""""""""""""
-" => PHP tools
-""""""""""""""""""""""""""""""
-" PHP executable (default = "php")
-let g:phpqa_php_cmd='/usr/bin/php'
-
-" PHP Code Sniffer binary (default = "phpcs")
-let g:phpqa_codesniffer_cmd='/usr/bin/phpcs'
-
-" Don't run messdetector on save (default = 1)
-let g:phpqa_messdetector_autorun = 0
-
-" Don't run codesniffer on save (default = 1)
-let g:phpqa_codesniffer_autorun = 0
-
-" Show code coverage on load (default = 0)
-let g:phpqa_codecoverage_autorun = 1
+" Moving betweeb tab
+nnoremap th :tabfirst<CR>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap tl :tablast<CR>
+nnoremap tt :tabedit<Space>
+nnoremap td :tabclose<CR>
+nnoremap t1 1gt
+nnoremap t2 2gt
+nnoremap t3 3gt
+nnoremap t4 4gt
+nnoremap t5 5gt
+nnoremap t6 6gt
+nnoremap t7 7gt
+nnoremap t8 8gt
+nnoremap t9 9gt
