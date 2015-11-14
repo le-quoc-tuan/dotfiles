@@ -3,7 +3,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias www='cd /var/www/html/'
- 
+alias ssha='eval $(ssh-agent -s) && ssh-add ~/.ssh/bit_bucket && ssh-add ~/.ssh/com_gitlab && ssh-add ~/.ssh/ltt_gitlab'
+
 # EDITOR
 alias v=vim
 alias sv='sudo vim'
@@ -19,7 +20,7 @@ alias cup='php /usr/local/bin/composer.phar update'
 
 # APACHE
 alias aer='tail -f /var/log/apache2/error.log'
- 
+
 # GIT
 alias gst='git status'
 alias gbr='git branch'

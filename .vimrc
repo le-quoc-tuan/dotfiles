@@ -4,7 +4,8 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'bling/vim-airline'              " status/tabline
+" Plug 'bling/vim-airline'              " status/tabline
+Plug 'powerline/powerline'            " status/tabline
 Plug 'jonathanfilip/vim-lucius'       " colorscheme
 Plug 'tpope/vim-surround'             " surroundings, parentheses, brackets, quotes
 Plug 'junegunn/vim-easy-align'        " alignment
@@ -55,14 +56,15 @@ set wrap "Wrap lines
 
 set t_Co=256
 colo lucius
+set background=dark
 
 "=============================================================
 " Plugin Settings
 "=============================================================
 
 " vim-airline
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " indent-line
 let g:indentLine_color_term = 253 " default is 239
